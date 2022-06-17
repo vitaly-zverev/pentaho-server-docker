@@ -57,3 +57,22 @@ Docker / compose command set
 
 ### Customize container, vim confs etc., backup image (snapshot)
 > docker commit (container_id)  pentaho_server_ce_my_snapshot
+
+### Environment Information 
+(Login, goto /Browse Files/Public/Data Ingration/Get Environment Information)
+
+Variable	Value
+Internal.Kettle.Version	9.3.0.0-428
+Internal.Kettle.Build.Version	9.3.0.0-428
+Internal.Kettle.Build.Date	2022-04-12 04.56.25
+java.runtime.version	11.0.15+10
+os.name	Linux
+os.version	5.4.0-117-generic
+os.arch	amd64
+user.country	${user.country}
+user.language	en
+user.home	/opt/pentaho
+KETTLE_HOME	${KETTLE_HOME}
+pentaho.solutionpath	solution:
+Internal.Transformation.Filename.Directory	
+Internal.Transformation.Filename.Name	
