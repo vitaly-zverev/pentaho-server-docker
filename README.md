@@ -1,29 +1,25 @@
-# **Pentaho server - Etapas implantação usando docker:**
+### Pentaho server-deployment steps using docker:
+1 - Send to the Dev/Prod server the package "pentaho-server-docker" (folder with dockerfile, docker-compose, lib, data)
 
-1- Enviar para o servidor HML/PRD o pacote "pentaho-server-docker" (pasta com dockerfile, docker-compose, lib, data)
+2 - Create pentaho server 9 image (build) based on dockerfile (command: docker-compose build)
 
-2- Criar imagem (build) do pentaho server 9 baseado no dockerfile (comando: docker-compose build)
+If the Dev/Prod server does not have internet access, it will not be possible to create the image, so perform additional steps before running:
 
-   Caso o servidor HML/PRD não tenha acesso a internet, não será possível criar a imagem, então realizar etapas adicionais antes de rodar:
-   - Gerar imagem em máquina que possui acesso a internet e realizar a exportação da imagem (docker save) para um arquivo .tar
-   - Carregar arquivo no servidor HML/PRD (docker load) 
+Generate image on a machine that has internet access and export the image (docker save) to a file .tar
+Upload file to Dev/Prod server (docker load)
+3 - create image && run container (command: docker-compose up)
 
-3- Rodar imagem para criar o container e inicializar (comando: docker-compose up)
+4 - Upload jobs/transformations zip to pentaho server web (http://server_ip:8081/pentaho/Login)
 
-4- Fazer upload do zip de jobs/transformações no pentaho server web (http://ip_servidor:8081/pentaho/Login)
+5 - adjust connection and user control settings
 
-5- Ajustar as configurações de conexão de banco e controle de usuário
+6 - Configure schedule for job execution
 
-6- Configurar schedule para execução do JOB
+it is also possible:
 
-**Pronto!**
-
-
-_**Obs. também é possível:**_ 
- - Realizar Commit do container para gerar snapshot.
- - Armazenar a imagem em repositório docker-hub ou nexus, usando o conceito de registrar a imagem.
-
-## Conjunto de comandos docker / compose
+Commit the container to generate snapshot.
+Store the image in Docker-hub or nexus repository, using the concept of registering the image.
+Docker / compose command set
 
 ### build (image creation)
 > docker build -t pentaho_server_ce:9.3 .
