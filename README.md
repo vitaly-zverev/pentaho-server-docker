@@ -25,39 +25,39 @@ _**Obs. também é possível:**_
 
 ## Conjunto de comandos docker / compose
 
-### build (cria imagem)
-docker build -t lpaschoal/pentaho_server:9.0 .
+### build (image creation)
+> docker build -t pentaho_server_ce:9.3 .
 
-**_Usando compose:_** 
-> docker-compose build
+**_via compose:_** 
+> docker-compose build 
 
-### Verificar imagens/container existentes
+### Verification of image/container
 >  - docker images  
 >  - docker ps  
 >  - docker ps -a
 >  - docker inspect
 >  - docker logs --follow (container_id)
 
-### run primeira vez (cria container)
-> docker run -p 127.0.0.1:8081:8080 lpaschoal/pentaho_server:9.0 
+### run (container creation && start)
+> docker run -p 127.0.0.1:8081:8080 pentaho_server_ce:9.3
 
-**_Usando compose:_** 
+**_via compose:_** 
 > docker-compose up
 
-### Navega pelos arquivos do container
+### Interactive shell (console) for container
 > docker exec -t -i pentaho-server /bin/bash
 
-### Rodar container existente
+### Start of created container
 > docker container start pentaho-server
 
-**_Usando compose:_** 
-> docker-compose up
+**_via compose:_** 
+> docker-compose start
 
-### Parar container existente
+### Stop of running container
 > docker container stop pentaho-server
 
-**_Usando compose:_** 
+**_via compose:_** 
 > docker-compose stop
 
 ### Customizar container com confs e depois gerar uma imagem (snapshot)
-> docker commit (container_id)  lpaschoal/pentaho_server_snapshot:2.0
+> docker commit (container_id)  pentaho_server_ce_my_snapshot
