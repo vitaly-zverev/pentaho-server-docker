@@ -55,5 +55,5 @@ Docker / compose command set
 **_via compose:_** 
 > docker-compose stop
 
-### Customizar container com confs e depois gerar uma imagem (snapshot)
+### Customize container, vim confs etc., backup image (snapshot)
 > docker commit (container_id)  pentaho_server_ce_my_snapshot
