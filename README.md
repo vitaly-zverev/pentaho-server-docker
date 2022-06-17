@@ -7,6 +7,7 @@ If the Dev/Prod server does not have internet access, it will not be possible to
 
 Generate image on a machine that has internet access and export the image (docker save) to a file .tar
 Upload file to Dev/Prod server (docker load)
+
 3 - create image && run container (command: docker-compose up)
 
 4 - Upload jobs/transformations zip to pentaho server web (http://server_ip:8081/pentaho/Login)
