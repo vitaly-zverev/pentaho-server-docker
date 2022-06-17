@@ -1,17 +1,17 @@
-FROM openjdk:8
+FROM openjdk:11.0.15-jdk-bullseye
 
-MAINTAINER Luan luan.m.paschoal@gmail.com
-LABEL Pentaho='Server 9.0 com drivers postgres e oracle'
+MAINTAINER vitaly.zverev@gmail.com
+LABEL Pentaho='Server 9.3 ce'
 
 # Init ENV
-ENV BISERVER_VERSION 9.0
-ENV BISERVER_TAG 9.0.0.0-423
+ENV BISERVER_VERSION 9.3
+ENV BISERVER_TAG 9.3.0.0-428
 ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
 ENV PENTAHO_JAVA_HOME $JAVA_HOME
-ENV PENTAHO_JAVA_HOME /usr/local/openjdk-8
-ENV JAVA_HOME /usr/local/openjdk-8
+ENV PENTAHO_JAVA_HOME /usr/local/openjdk-11
+ENV JAVA_HOME /usr/local/openjdk-11
 RUN . /etc/environment \
  export JAVA_HOME
 
@@ -26,12 +26,12 @@ RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chow
 # Disable first-time startup prompt
 # Disable daemon mode for Tomcat
 RUN /usr/bin/wget --progress=dot:giga \
-"http://downloads.sourceforge.net/project/pentaho/Pentaho%20${BISERVER_VERSION}/server/pentaho-server-ce-${BISERVER_TAG}.zip" \
+"https://sourceforge.net/projects/pentaho/files/Pentaho-9.3/server/pentaho-server-ce-9.3.0.0-428.zip/download" \
 -O /tmp/pentaho-server-ce-${BISERVER_TAG}.zip; \
 /usr/bin/unzip -q /tmp/pentaho-server-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME; \
 rm -f /tmp/pentaho-server-ce-${BISERVER_TAG}.zip $PENTAHO_HOME/pentaho-server/promptuser.sh; \
 sed -i -e 's/\(exec ".*"\) start/\1 run/' $PENTAHO_HOME/pentaho-server/tomcat/bin/startup.sh; \
-chmod +x $PENTAHO_HOME/pentaho-server/start-pentaho.sh;
+chmod +x $PENTAHO_HOME/pentaho-server/start-pentaho-debug.sh;
 
 #ADD DB drivers
 COPY ./lib/. $PENTAHO_HOME/pentaho-server/tomcat/lib
@@ -43,7 +43,8 @@ USER pentaho
 
 WORKDIR /opt/pentaho
 
-EXPOSE 8080 8009
+EXPOSE 8080 8009 8443
 
-CMD ["sh", "/opt/pentaho/pentaho-server/start-pentaho.sh"]
+CMD ["sh", "/opt/pentaho/pentaho-server/start-pentaho-debug.sh"]
+#CMD ["sh", "/opt/pentaho/pentaho-server/start-pentaho.sh"]
 #ENTRYPOINT ["sh", "-c", "$PENTAHO_HOME/pentaho-server/scripts/run.sh"]
