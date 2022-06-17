@@ -60,7 +60,7 @@ Docker / compose command set
 > docker commit (container_id)  pentaho_server_ce_my_snapshot
 
 ### Environment Information 
->(Login, goto /Browse Files/Public/Data Ingration/Get Environment Information)
+>( http://server_ip:8081/pentaho/Login , goto /Browse Files/Public/Data Integration/Get Environment Information)
 
 |Variable	                      |Value				        |
 | ----------------------------- | ------------------- |
