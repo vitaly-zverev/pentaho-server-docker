@@ -23,7 +23,7 @@ Store the image in Docker-hub or nexus repository, using the concept of register
 Docker / compose command set
 
 ### build (image creation)
-> docker build -t pentaho_server_ce:9.3 .
+> docker build -t pentaho_server_ce:9.4 .
 
 **_via compose:_** 
 > docker-compose build 
@@ -36,7 +36,7 @@ Docker / compose command set
 >  - docker logs --follow (container_id)
 
 ### run (container creation && start)
-> docker run -p 127.0.0.1:8081:8080 pentaho_server_ce:9.3
+> docker run -p 127.0.0.1:8081:8080 pentaho_server_ce:9.4
 
 **_via compose:_** 
 > docker-compose up
@@ -62,15 +62,17 @@ Docker / compose command set
 ### Environment Information 
 >( http://server_ip:8081/pentaho/Login , goto /Browse Files/Public/Data Integration/Get Environment Information)
 
-|Variable	                      |Value				        |
+|Variable	                    |Value				  |
 | ----------------------------- | ------------------- |
-|Internal.Kettle.Version	      |9.3.0.0-428          |
-|Internal.Kettle.Build.Version	|9.3.0.0-428          |
-|Internal.Kettle.Build.Date	    |2022-04-12 04.56.25  |
-|java.runtime.version	          |11.0.15+10           |
-|os.name	                      |Linux                |
+|Internal.Kettle.Version	    |9.4.0.0-343          |
+|Internal.Kettle.Build.Version	|0.0                  |
+|Internal.Kettle.Build.Date	    |2022-11-08 07.50.27  |
+|java.runtime.version	        |11.0.15+10           |
+|os.name	                    |Linux                |
 |os.version	                    |5.4.0-117-generic    |
-|os.arch	                      |amd64                |
-|user.country	                  |${user.country}      |
+|os.arch	                    |amd64                |
+|user.country	                |${user.country}      |
 |user.language	                |en                   |
 |user.home                      |/opt/pentaho         |
+
+

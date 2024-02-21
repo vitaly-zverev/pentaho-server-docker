@@ -1,11 +1,11 @@
 FROM openjdk:11.0.15-jdk-bullseye
 
 MAINTAINER vitaly.zverev@gmail.com
-LABEL Pentaho='Server 9.3 ce'
+LABEL Pentaho='Server 9.4 ce'
 
 # Init ENV
-ENV BISERVER_VERSION 9.3
-ENV BISERVER_TAG 9.3.0.0-428
+ENV BISERVER_VERSION 9.4
+ENV BISERVER_TAG 9.4.0.0-343
 ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
@@ -26,7 +26,7 @@ RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chow
 # Disable first-time startup prompt
 # Disable daemon mode for Tomcat
 RUN /usr/bin/wget --progress=dot:giga \
-"https://sourceforge.net/projects/pentaho/files/Pentaho-9.3/server/pentaho-server-ce-9.3.0.0-428.zip/download" \
+"https://privatefilesbucket-community-edition.s3.us-west-2.amazonaws.com/9.4.0.0-343/ce/server/pentaho-server-ce-9.4.0.0-343.zip" \
 -O /tmp/pentaho-server-ce-${BISERVER_TAG}.zip; \
 /usr/bin/unzip -q /tmp/pentaho-server-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME; \
 rm -f /tmp/pentaho-server-ce-${BISERVER_TAG}.zip $PENTAHO_HOME/pentaho-server/promptuser.sh; \

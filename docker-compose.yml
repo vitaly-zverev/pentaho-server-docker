@@ -2,7 +2,7 @@ version: '3'
 services:
   pen-server:
     build: .
-    image: pentaho_server_ce:9.3
+    image: pentaho_server_ce:9.4
     container_name: pentaho-server
     networks:
       - pentaho_hub
@@ -17,5 +17,3 @@ services:
       - TZ=Europe/Moskow
 networks:
   pentaho_hub:
-    external:
-      name: network_pentaho
