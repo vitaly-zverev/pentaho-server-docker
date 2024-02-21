@@ -75,4 +75,6 @@ Docker / compose command set
 |user.language	                |en                   |
 |user.home                      |/opt/pentaho         |
 
+### Interactive Reports
 
+The "Interactive Reports" functionality is not included in the Community Edition (CE) of Pentaho Server since version 6.0. Before this version, "Interactive Reports" were available in CE. However, starting with version 6.0, the "Interactive Reports" functionality became available only in the paid version of Pentaho Server.
